@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  KeyboardAvoidingView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 
@@ -16,29 +15,27 @@ const ListItem = ({item, checkSolution}) => {
 
   return (
     <View style={styles.listItem}>
-      <KeyboardAvoidingView>
-        <View style={styles.listItemView}>
-          <Text style={styles.listItemText}>{item.text}</Text>
-          <View style={styles.outputView}>
-            <TextInput
-              placeholder="0000"
-              placeholderTextColor="#aaa"
-              style={styles.input}
-              onChangeText={onChange}
-            />
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => {
-                checkSolution(item.id, code);
-                onChange();
-              }}>
-              <Icon name="flag-checkered" size={20} style={{marginRight: 10}} />
-              <Text style={styles.btnText}>Code für {item.text} prüfen</Text>
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.outputText}>{item.output}</Text>
+      <View style={styles.listItemView}>
+        <Text style={styles.listItemText}>{item.text}</Text>
+        <View style={styles.outputView}>
+          <TextInput
+            placeholder="0000"
+            placeholderTextColor="#aaa"
+            style={styles.input}
+            onChangeText={onChange}
+          />
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => {
+              checkSolution(item.id, code);
+              onChange();
+            }}>
+            <Icon name="flag-checkered" size={20} style={{marginRight: 10}} />
+            <Text style={styles.btnText}>Code für {item.text} prüfen</Text>
+          </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
+        <Text style={styles.outputText}>{item.output}</Text>
+      </View>
     </View>
   );
 };
